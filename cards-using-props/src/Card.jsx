@@ -4,13 +4,15 @@ function Card(props) {
   return (
     <div className="container">
         <div className="card">
-      <div className="card__body">
-        <img src={props.img} class="card__image" alt='' />
-        <h2 className="card__title">{props.title}</h2>
-        <p className="card__description">{props.description}</p>
-      </div>
-      <button className="card__btn">Read More</button>
-    </div>
+            <div className="cardImage">
+                <img src={props.img} alt='' />
+            </div>
+            <div className="cardContent">
+                <h2 className="cardTitle">{props.title}</h2>
+                <p className="cardDescription">{props.description}</p>
+                <button className="cardBtn">Read More</button>
+            </div>
+        </div>
     </div>
   )
 }
