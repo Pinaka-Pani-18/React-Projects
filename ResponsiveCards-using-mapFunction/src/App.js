@@ -30,10 +30,10 @@ function App() {
   ];
 
   return (
-    <div>
-      <section>
+    <div className="App">
         <div className="container">
           <h1>Responsive Cards using Map function</h1>
+          <div className="center">
           <div className="cards">
           {
             cards.map((card)=>(
@@ -45,8 +45,8 @@ function App() {
             ))
           }
           </div>
+          </div>
         </div>
-      </section>
     </div>
   );
 }
