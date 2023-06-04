@@ -7,8 +7,10 @@ const App = () => {
   return (
     <div className="container">
       <Navbar />
-      <ContactHeader />
-      <ContactForm />
+      <main>
+        <ContactHeader />
+        <ContactForm />
+      </main>
     </div>
   );
 };

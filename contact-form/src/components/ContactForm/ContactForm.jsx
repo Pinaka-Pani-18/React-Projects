@@ -1,8 +1,24 @@
 import styles from "./ContactForm.module.css";
 import Button from "../Button/Button.jsx";
 import { MdOutlineMessage, MdCall, MdEmail } from "react-icons/md";
+import { useState } from "react";
 
 const ContactForm = () => {
+  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
+  let [text, setText] = useState("");
+
+  function onsubmitFun(e) {
+    e.preventDefault();
+    name = e.target[0].value;
+    email = e.target[1].value;
+    text = e.target[2].value;
+    setName(name);
+    setEmail(email);
+    setText(text);
+    alert("Name: " + name + "\nEmail: " + email + "\nText: " + text);
+  }
+
   return (
     <section className={styles.container}>
       <div className={styles.contactForm}>
@@ -18,7 +34,7 @@ const ContactForm = () => {
           icon={<MdEmail fontSize="24px" />}
           color={true}
         />
-        <form action="" className={styles.formContainer}>
+        <form action="" onSubmit={onsubmitFun} className={styles.formContainer}>
           <div className={styles.formControl}>
             <label htmlFor="name">Name</label>
             <input type="text" id="name" />

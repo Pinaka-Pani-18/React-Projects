@@ -53,3 +53,7 @@
   padding: 5px 10px;
   border: 2px solid black;
 }
+
+.contactImage img {
+  width: 570px;
+}
