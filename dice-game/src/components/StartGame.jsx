@@ -8,7 +8,7 @@ const StartGame = ({ toggle }) => {
         <img src="/images/dice.png" alt="dice" />
       </div>
       <div className="startGameContainer">
-        <h1>Start Game</h1>
+        <h1>Dice Game</h1>
         <Button onClick={toggle}>Play Now</Button>
       </div>
     </StartGameEl>

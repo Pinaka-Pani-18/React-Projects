@@ -1,24 +1,23 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useState } from "react";
 
-const Selection = ({ selectedNumber, setSelectedNumber }) => {
+const Selection = ({
+  selectedNumber,
+  setSelectedNumber,
+  isActive,
+  setIsActive,
+}) => {
   const arrayNumber = [1, 2, 3, 4, 5, 6];
-
-  const [isActive, setIsActive] = useState(false);
 
   function selectedFun(value) {
     setSelectedNumber(value);
-    setIsActive(true);
+    setIsActive("");
   }
 
   return (
     <SelectionEl>
-      {isActive ? (
-        ""
-      ) : (
-        <p className="notSelect">You have not selected any number</p>
-      )}
+      <p className="notSelect">{isActive}</p>
+
       <div className="flex">
         {arrayNumber.map((value, i) => {
           return (
