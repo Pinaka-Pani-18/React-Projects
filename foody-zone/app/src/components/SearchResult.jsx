@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { BASE_URL, Button } from "../App";
 
 const SearchResult = ({ data }) => {
-  console.log(data);
   return (
     <FoodCardContainer>
       <FoodCards>
@@ -12,8 +11,6 @@ const SearchResult = ({ data }) => {
             <FoodCard key={item.name}>
               <div className="food_image">
                 <img src={BASE_URL + item.image} alt="" />
-                {console.log(item)}
-                {console.log(item.name)}
               </div>
               <div className="food_info">
                 <div className="info">
@@ -33,7 +30,7 @@ const SearchResult = ({ data }) => {
 export default SearchResult;
 
 const FoodCardContainer = styled.section`
-  height: calc(100vh - 210px);
+  min-height: calc(100vh - 210px);
   background: url("/images/bg.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -41,7 +38,7 @@ const FoodCardContainer = styled.section`
 `;
 
 const FoodCards = styled.section`
-  padding-top: 64px;
+  padding: 64px 0;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
