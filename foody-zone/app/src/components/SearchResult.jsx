@@ -62,6 +62,7 @@ const FoodCard = styled.section`
   background-blend-mode: overlay, normal;
   backdrop-filter: blur(13.1842px);
 
+  border: 1px solid white;
   border-radius: 20px;
 
   display: flex;
