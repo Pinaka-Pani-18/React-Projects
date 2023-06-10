@@ -6,7 +6,7 @@ const Modal = ({ handleClose, isOpen, children }) => {
   return createPortal(
     <>
       {isOpen && (
-        <>
+        <div className="absolute left-0 top-0 z-40 grid h-screen w-screen place-content-center backdrop-blur">
           <div className=" text-blacks relative z-50 m-auto min-h-[200px] w-[360px] rounded-md bg-white p-4">
             <div
               className="flex cursor-pointer justify-end text-2xl"
@@ -16,11 +16,7 @@ const Modal = ({ handleClose, isOpen, children }) => {
             </div>
             {children}
           </div>
-          <div
-            onClick={handleClose}
-            className="absolute left-0 top-0 z-40 h-screen w-screen backdrop-blur"
-          ></div>
-        </>
+        </div>
       )}
     </>,
     document.getElementById("modal-root")
