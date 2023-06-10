@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import AddAndUpdateContact from "./components/AddAndUpdateContact";
 import useDisclouse from "./hooks/useDisclouse";
+import NotFoundContact from "./components/NotFoundContact";
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -39,6 +40,31 @@ const App = () => {
     }
   }
 
+  const filterContacts = (e) => {
+    const searchValue = e.target.value;
+
+    const contactRef = collection(db, "contacts");
+
+    onSnapshot(contactRef, (snapshot) => {
+      const collectionList = snapshot.docs.map((doc) => {
+        return {
+          id: doc.id,
+          ...doc.data(),
+        };
+      });
+
+      const filteredContacts = collectionList.filter((contact) => {
+        return contact.name.toLowerCase().includes(searchValue.toLowerCase());
+      });
+
+      console.log(filteredContacts);
+
+      setContacts(filteredContacts);
+
+      return filteredContacts;
+    });
+  };
+
   useEffect(() => {
     getContacts();
   }, []);
@@ -47,11 +73,15 @@ const App = () => {
     <>
       <div className="m-auto max-w-[360px] py-2  text-white">
         <Navbar />
-        <InputForm handleOpen={handleOpen} />
+        <InputForm filterContacts={filterContacts} handleOpen={handleOpen} />
         <div className="mt-5">
-          {contacts.map((contact) => {
-            return <ContactCard key={contact.id} contact={contact} />;
-          })}
+          {contacts.length <= 0 ? (
+            <NotFoundContact />
+          ) : (
+            contacts.map((contact) => {
+              return <ContactCard key={contact.id} contact={contact} />;
+            })
+          )}
         </div>
       </div>
       <AddAndUpdateContact isOpen={isOpen} handleClose={handleClose} />

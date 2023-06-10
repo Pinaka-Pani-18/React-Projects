@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import Modal from "./Modal";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { db } from "../config/firebase";
 import { toast } from "react-toastify";
+import * as Yup from "yup";
+
+const contactSchemaValidation = Yup.object().shape({
+  name: Yup.string().required("Name is Required"),
+  email: Yup.string().email("Invalid Email").required("Email is Required"),
+});
 
 const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
   const addContact = async (contact) => {
@@ -32,6 +38,7 @@ const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
     <div>
       <Modal isOpen={isOpen} handleClose={handleClose}>
         <Formik
+          validationSchema={contactSchemaValidation}
           initialValues={
             isUpdate
               ? { name: contact.name, email: contact.email }
@@ -48,6 +55,9 @@ const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
                 name="name"
                 className="h-[40px] rounded-md border-[2px] border-black px-4 "
               />
+              <div className="text-xs text-red-500">
+                <ErrorMessage name="name" />
+              </div>
             </div>
             <div className="flex flex-col gap-1">
               <label htmlFor="email">EMAIL</label>
@@ -56,6 +66,9 @@ const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
                 name="email"
                 className="h-[40px] rounded-md border-[2px] border-black px-4 "
               />
+              <div className="text-xs text-red-500">
+                <ErrorMessage name="email" />
+              </div>
             </div>
             <button
               type="submit"
