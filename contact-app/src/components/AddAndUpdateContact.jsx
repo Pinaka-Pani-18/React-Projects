@@ -1,12 +1,46 @@
 /* eslint-disable react/prop-types */
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import Modal from "./Modal";
 import { Formik, Form, Field } from "formik";
+import { db } from "../config/firebase";
+import { toast } from "react-toastify";
 
-const AddAndUpdateContact = ({ isOpen, handleClose }) => {
+const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
+  const addContact = async (contact) => {
+    try {
+      const contactRef = collection(db, "contacts");
+      await addDoc(contactRef, contact);
+      handleClose();
+      toast.success("Contact Added Successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateContact = async (contact, id) => {
+    try {
+      const contactRef = doc(db, "contacts", id);
+      await updateDoc(contactRef, contact);
+      handleClose();
+      toast.success("Contact Updated Successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Modal isOpen={isOpen} handleClose={handleClose}>
-        <Formik initialValues={{ name: "", email: "" }}>
+        <Formik
+          initialValues={
+            isUpdate
+              ? { name: contact.name, email: contact.email }
+              : { name: "", email: "" }
+          }
+          onSubmit={(values) => {
+            isUpdate ? updateContact(values, contact.id) : addContact(values);
+          }}
+        >
           <Form className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
               <label htmlFor="name">NAME</label>
@@ -27,7 +61,7 @@ const AddAndUpdateContact = ({ isOpen, handleClose }) => {
               type="submit"
               className="mt-2 self-end rounded-md bg-orange px-5 py-2"
             >
-              SUBMIT
+              {isUpdate ? "Update" : "Add"} Contact
             </button>
           </Form>
         </Formik>

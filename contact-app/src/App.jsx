@@ -2,31 +2,38 @@
 import ContactCard from "./components/ContactCard";
 import InputForm from "./components/InputForm";
 import Navbar from "./components/Navbar";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "./config/firebase";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import AddAndUpdateContact from "./components/AddAndUpdateContact";
+import useDisclouse from "./hooks/useDisclouse";
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, handleClose, handleOpen } = useDisclouse();
 
   async function getContacts() {
     try {
       const contactRef = collection(db, "contacts");
 
-      const collectionSnapshots = await getDocs(contactRef);
+      // const collectionSnapshots = await getDocs(contactRef);
 
-      const collectionList = collectionSnapshots.docs.map((doc) => {
-        return {
-          id: doc.id,
-          ...doc.data(),
-        };
+      onSnapshot(contactRef, (snapshot) => {
+        const collectionList = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
+
+        setContacts(collectionList);
+
+        return collectionList;
       });
-
-      setContacts(collectionList);
     } catch (error) {
       console.log(error);
     }
@@ -36,22 +43,19 @@ const App = () => {
     getContacts();
   }, []);
 
-  function handleOpen() {
-    setIsOpen(true);
-  }
-
-  function handleClose() {
-    setIsOpen(false);
-  }
-
   return (
     <>
       <div className="m-auto max-w-[360px] py-2  text-white">
         <Navbar />
         <InputForm handleOpen={handleOpen} />
-        <ContactCard contacts={contacts} />
+        <div className="mt-5">
+          {contacts.map((contact) => {
+            return <ContactCard key={contact.id} contact={contact} />;
+          })}
+        </div>
       </div>
       <AddAndUpdateContact isOpen={isOpen} handleClose={handleClose} />
+      <ToastContainer position="bottom-center" />
     </>
   );
 };
