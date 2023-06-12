@@ -9,6 +9,7 @@ import * as Yup from "yup";
 const contactSchemaValidation = Yup.object().shape({
   name: Yup.string().required("Name is Required"),
   email: Yup.string().email("Invalid Email").required("Email is Required"),
+  phone: Yup.number().required("Phone Number is Required"),
 });
 
 const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
@@ -41,8 +42,12 @@ const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
           validationSchema={contactSchemaValidation}
           initialValues={
             isUpdate
-              ? { name: contact.name, email: contact.email }
-              : { name: "", email: "" }
+              ? {
+                  name: contact.name,
+                  email: contact.email,
+                  phone: contact.phone,
+                }
+              : { name: "", email: "", phone: "" }
           }
           onSubmit={(values) => {
             isUpdate ? updateContact(values, contact.id) : addContact(values);
@@ -68,6 +73,17 @@ const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
               />
               <div className="text-xs text-red">
                 <ErrorMessage name="email" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="phone">Phone No</label>
+              <Field
+                type="number"
+                name="phone"
+                className="h-[40px] rounded-md border-[2px] border-black px-4 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+              />
+              <div className="text-xs text-red">
+                <ErrorMessage name="phone" />
               </div>
             </div>
             <button

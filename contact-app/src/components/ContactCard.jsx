@@ -23,12 +23,15 @@ const ContactCard = ({ contact }) => {
 
   return (
     <>
-      <div className="mb-3 flex h-[60px] w-[360px] items-center  justify-between rounded-md bg-white px-2.5 text-black">
+      <div className="mb-3 flex h-[80px] w-[360px] items-center  justify-between rounded-md bg-white px-2.5 text-black">
         <div className="flex items-center ">
-          <HiOutlineUserCircle className=" text-4xl  text-red" />
+          <HiOutlineUserCircle className=" text-6xl  text-red" />
           <div className="ml-3">
-            <h4 className=" -mb-1 text-base font-medium">{contact.name}</h4>
-            <p className="text-sm font-normal">{contact.email}</p>
+            <h4 className="  text-base font-semibold text-red">
+              {contact.name}
+            </h4>
+            <p className="mb-1 text-xs font-normal">{contact.email}</p>
+            <p className=" text-xs font-normal ">{contact.phone}</p>
           </div>
         </div>
         <div className="flex items-center gap-4">

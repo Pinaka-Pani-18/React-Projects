@@ -9,13 +9,13 @@ const InputForm = ({ handleOpen, filterContacts }) => {
           onChange={filterContacts}
           type="text"
           placeholder="Search Contact"
-          className=" h-[40px] w-[305px] rounded-md border-[2px] border-white bg-transparent px-9 placeholder:text-white"
+          className=" h-[50px] w-[290px] rounded-md border-[2px] border-white bg-transparent px-9 placeholder:text-white"
         />
-        <FiSearch className="absolute left-2 top-2 text-2xl text-red " />
+        <FiSearch className="absolute left-2 top-3 text-2xl text-red " />
       </div>
 
       <AiFillPlusCircle
-        className="cursor-pointer text-5xl text-white"
+        className="cursor-pointer text-6xl text-white"
         onClick={handleOpen}
       />
     </div>
