@@ -9,7 +9,7 @@ const InputForm = ({ handleOpen, filterContacts }) => {
           onChange={filterContacts}
           type="text"
           placeholder="Search Contact"
-          className=" h-[40px] w-[305px] rounded-md border border-white bg-transparent px-9 placeholder:text-white"
+          className=" h-[40px] w-[305px] rounded-md border-[2px] border-white bg-transparent px-9 placeholder:text-white"
         />
         <FiSearch className="absolute left-2 top-2 text-2xl text-red " />
       </div>
