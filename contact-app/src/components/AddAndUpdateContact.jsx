@@ -55,7 +55,7 @@ const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
                 name="name"
                 className="h-[40px] rounded-md border-[2px] border-black px-4 "
               />
-              <div className="text-xs text-red-500">
+              <div className="text-xs text-red">
                 <ErrorMessage name="name" />
               </div>
             </div>
@@ -66,13 +66,13 @@ const AddAndUpdateContact = ({ isOpen, handleClose, isUpdate, contact }) => {
                 name="email"
                 className="h-[40px] rounded-md border-[2px] border-black px-4 "
               />
-              <div className="text-xs text-red-500">
+              <div className="text-xs text-red">
                 <ErrorMessage name="email" />
               </div>
             </div>
             <button
               type="submit"
-              className="mt-2 self-end rounded-md bg-orange px-5 py-2"
+              className="mt-2 self-end rounded-md bg-red px-5 py-2 text-white"
             >
               {isUpdate ? "Update" : "Add"} Contact
             </button>

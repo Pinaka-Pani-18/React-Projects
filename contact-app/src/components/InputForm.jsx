@@ -11,7 +11,7 @@ const InputForm = ({ handleOpen, filterContacts }) => {
           placeholder="Search Contact"
           className=" h-[40px] w-[305px] rounded-md border border-white bg-transparent px-9 placeholder:text-white"
         />
-        <FiSearch className="absolute left-2 top-2 text-2xl text-white " />
+        <FiSearch className="absolute left-2 top-2 text-2xl text-red " />
       </div>
 
       <AiFillPlusCircle

@@ -23,19 +23,22 @@ const ContactCard = ({ contact }) => {
 
   return (
     <>
-      <div className="mb-3 flex h-[60px] w-[360px] items-center  justify-between rounded-md bg-yellow px-2.5 text-black">
+      <div className="mb-3 flex h-[60px] w-[360px] items-center  justify-between rounded-md bg-white px-2.5 text-black">
         <div className="flex items-center ">
-          <HiOutlineUserCircle className=" text-4xl  text-orange" />
+          <HiOutlineUserCircle className=" text-4xl  text-red" />
           <div className="ml-3">
             <h4 className=" -mb-1 text-base font-medium">{contact.name}</h4>
             <p className="text-sm font-normal">{contact.email}</p>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <FiEdit onClick={handleOpen} className=" cursor-pointer text-3xl" />
+          <FiEdit
+            onClick={handleOpen}
+            className=" cursor-pointer text-3xl text-red"
+          />
           <FaTrash
             onClick={() => deleteContact(contact.id)}
-            className="cursor-pointer text-2xl"
+            className="cursor-pointer text-2xl text-red"
           />
         </div>
       </div>
