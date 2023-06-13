@@ -10,14 +10,14 @@ const HeroSection = () => {
           Claim now <img src="" alt="claim-image" className="claim-arrow"/>
         </div>
       </div> */}
-      <div className="flex absolute-center flex-col hero-section max-width">
+      <div className="hero-section flex absolute-center flex-col max-width">
         <div className="hero-heading">
           rewards for paying credit card bills.
         </div>
         <div className="hero-subheading">
           join 9M+ members who win rewards and cashbacks everyday
         </div>
-        <Button buttonText={"Download CRED"} />
+        <Button className="flex absolute-center" buttonText={"Download CRED"} />
       </div>
     </div>
   );
