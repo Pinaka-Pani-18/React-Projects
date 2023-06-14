@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StartGame = ({ toggle }) => {
   return (
     <StartGameEl>
-      <div>
+      <div className="image">
         <img src="/images/dice.png" alt="dice" />
       </div>
       <div className="startGameContainer">
@@ -30,6 +30,49 @@ const StartGameEl = styled.div`
       color: black;
       font-size: 96px;
       white-space: nowrap;
+    }
+  }
+  @media (max-width: 1200px) {
+    justify-content: center;
+    align-items: center;
+    margin: 150px auto 0 0;
+    width: 90%;
+    .image img {
+      width: 500px;
+      margin-right: 50px;
+    }
+    .startGameContainer h1 {
+      font-size: 65px;
+      white-space: normal;
+    }
+    .startGameContainer button {
+      font-size: 16px;
+      width: 180px;
+    }
+  }
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    margin: 60px auto;
+    .image img {
+      width: 460px;
+    }
+    .startGameContainer {
+      align-self: center;
+    }
+    /* .startGameContainer h1 {
+      align-self: center;
+    }
+    .startGameContainer button {
+      align-self: center;
+    } */
+  }
+  @media (max-width: 768px) {
+    margin: 140px auto;
+    .image img {
+      width: 300px;
+    }
+    .startGameContainer h1 {
+      font-size: 55px;
     }
   }
 `;

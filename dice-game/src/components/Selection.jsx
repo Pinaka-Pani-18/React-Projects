@@ -34,7 +34,7 @@ const Selection = ({
         })}
       </div>
 
-      <p className="select">Select Number</p>
+      <p className="select">Select a number</p>
     </SelectionEl>
   );
 };
@@ -46,7 +46,7 @@ const SelectionEl = styled.div`
   height: 138px;
   display: flex;
   flex-direction: column;
-  margin: 40px 80px 0 0;
+  margin: 40px 40px 0 0;
   .flex {
     display: flex;
     justify-content: center;
@@ -56,22 +56,40 @@ const SelectionEl = styled.div`
     align-self: flex-end;
     font-size: 18px;
     margin-top: 10px;
-    font-weight: 600;
+    font-weight: 500;
+    margin-right: 30px;
   }
   .notSelect {
     font-size: 16px;
     color: red;
     font-weight: 500;
     align-self: flex-end;
+    margin-right: 30px;
     margin-bottom: 5px;
     margin-top: -10px;
+  }
+
+  @media (max-width: 767px) {
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+    .flex div {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+    }
+    .select,
+    .notSelect {
+      align-self: center;
+      font-size: 16px;
+    }
   }
 `;
 
 const Box = styled.div`
-  width: 72px;
-  height: 72px;
-  line-height: 72px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
   border: 2px solid black;
   background-color: ${(props) => (!props.isSelected ? "white" : "black")};

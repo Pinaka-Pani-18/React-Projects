@@ -67,8 +67,17 @@ export default StartPlay;
 
 const StartPlayContainer = styled.main`
   height: 100vh;
+
   .scoreSelection {
     display: flex;
     justify-content: space-between;
+  }
+
+  @media (max-width: 767px) {
+    .scoreSelection {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 `;

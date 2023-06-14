@@ -48,4 +48,10 @@ const RoleDiceContainer = styled.div`
     flex-direction: column;
     gap: 10px;
   }
+
+  @media (max-width: 767px) {
+    .image img {
+      width: 130px;
+    }
+  }
 `;
