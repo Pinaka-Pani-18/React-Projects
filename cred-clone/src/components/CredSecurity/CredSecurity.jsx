@@ -1,28 +1,27 @@
-import "./feelSpecial.css";
+import "./credSecurity.css";
 import Button from "../common/Button/Button";
 
-const FeelSpecial = () => {
+const CredSecurity = () => {
   return (
-    <div className="free-space photo-section">
+    <div className="cred-security photo-section">
       <div className="max-width">
         <div className="photo-section-child">
           <div className="photo-section-top">
             <div className="photo-section-heading">
-              feel special more often.
+              security first. and second.
             </div>
             <div className="photo-section-subheading">
-              exclusive rewards for paying your bills
+              what’s yours remains only yours.
             </div>
           </div>
           <div className="photo-section-bottom">
             <div className="photo-section-description">
-              every time you pay your credit card bills on CRED, you receive
-              CRED coins. you can use these to win exclusive rewards or get
-              special access to curated products and experiences. on CRED, good
-              begets good.
+              CRED ensures that all your personal data and transactions are
+              encrypted, and secured so what’s yours remains only yours. there’s
+              no room for mistakes because we didn’t leave any.
             </div>
             <div className="photo-section-button">
-              <Button buttonText={"Explore rewards"} />
+              <Button buttonText={"Become a member"} />
             </div>
           </div>
         </div>
@@ -31,4 +30,4 @@ const FeelSpecial = () => {
   );
 };
 
-export default FeelSpecial;
+export default CredSecurity;

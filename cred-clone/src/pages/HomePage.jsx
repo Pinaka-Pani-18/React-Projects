@@ -1,5 +1,6 @@
 import CredExperience from "../components/CredExperience/CredExperience";
-import FreeSpace from "../components/FreeSpace/FreeSpace";
+import CredSecurity from "../components/CredSecurity/CredSecurity";
+import FeelSpecial from "../components/FeelSpecial/FeelSpecial";
 import HeroSection from "../components/HeroSection/HeroSection";
 import ProductShowCase from "../components/ProductShowCase/ProductShowCase";
 import Header from "../components/common/Header/Header";
@@ -10,8 +11,9 @@ const HomePage = () => {
       <Header />
       <HeroSection />
       <ProductShowCase />
-      <FreeSpace />
+      <FeelSpecial />
       <CredExperience />
+      <CredSecurity />
     </>
   );
 };
