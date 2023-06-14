@@ -1,3 +1,4 @@
+import CredExperience from "../components/CredExperience/CredExperience";
 import FreeSpace from "../components/FreeSpace/FreeSpace";
 import HeroSection from "../components/HeroSection/HeroSection";
 import ProductShowCase from "../components/ProductShowCase/ProductShowCase";
@@ -10,6 +11,7 @@ const HomePage = () => {
       <HeroSection />
       <ProductShowCase />
       <FreeSpace />
+      <CredExperience />
     </>
   );
 };
