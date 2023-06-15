@@ -1,3 +1,4 @@
+import BrandsLove from "../components/BrandsLove/BrandsLove";
 import CredExperience from "../components/CredExperience/CredExperience";
 import CredSecurity from "../components/CredSecurity/CredSecurity";
 import FeelSpecial from "../components/FeelSpecial/FeelSpecial";
@@ -12,6 +13,7 @@ const HomePage = () => {
       <HeroSection />
       <ProductShowCase />
       <FeelSpecial />
+      <BrandsLove />
       <CredExperience />
       <CredSecurity />
     </>
