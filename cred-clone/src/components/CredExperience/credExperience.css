@@ -16,9 +16,9 @@
     background-position: right center;
   }
   .cred-experience-heading {
-    margin-top: 400px;
+    margin-top: 500px;
   }
-  .cred-experience-description {
+  .cred-experience .cred-experience-description {
     margin-top: 100px;
   }
 }
