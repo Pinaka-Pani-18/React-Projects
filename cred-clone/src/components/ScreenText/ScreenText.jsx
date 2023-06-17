@@ -12,11 +12,6 @@ const ScreenText = ({ screen, setCurrentImg, i }) => {
       setShowAnimation(true);
       setCurrentImg(i);
     }
-    clearTimeout(a);
-
-    const a = setTimeout(() => {
-      setShowAnimation(false);
-    }, 2000);
   };
 
   let options = {
