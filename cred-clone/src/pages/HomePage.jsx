@@ -1,6 +1,7 @@
 import BrandsLove from "../components/BrandsLove/BrandsLove";
 import CredExperience from "../components/CredExperience/CredExperience";
 import CredSecurity from "../components/CredSecurity/CredSecurity";
+import CredStory from "../components/CredStory/CredStory";
 import FeelSpecial from "../components/FeelSpecial/FeelSpecial";
 import HeroSection from "../components/HeroSection/HeroSection";
 import MobileScroll from "../components/MobileScroll/MobileScroll";
@@ -20,6 +21,7 @@ const HomePage = () => {
       <MobileScroll />
       <WindowPeek />
       <CredSecurity />
+      <CredStory />
     </>
   );
 };
