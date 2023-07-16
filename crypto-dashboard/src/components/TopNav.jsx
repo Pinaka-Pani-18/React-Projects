@@ -2,16 +2,27 @@
 import { Box, HStack, Heading, Icon } from "@chakra-ui/react";
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { FaUserCircle } from "react-icons/fa";
+import { RiMenu2Fill } from "react-icons/ri";
 
-const TopNav = ({ title }) => {
+const TopNav = ({ title, onOpen }) => {
   return (
-    <Box>
+    <Box bg={"white"} px={3}>
       <HStack
         h={16}
         justifyContent={"space-between"}
         mx={"auto"}
         maxW={"70rem"}
       >
+        <Icon
+          as={RiMenu2Fill}
+          onClick={onOpen}
+          display={{
+            base: "block",
+            lg: "none",
+          }}
+          cursor={"pointer"}
+          fontSize={"24px"}
+        />
         <Heading fontWeight={"medium"} fontSize={"28px"}>
           {title}
         </Heading>

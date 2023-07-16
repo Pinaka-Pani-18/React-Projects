@@ -18,10 +18,17 @@ const SideNav = () => {
   ];
   return (
     <Stack
-      boxShadow={"lg"}
+      boxShadow={{
+        base: "none",
+        lg: "lg",
+      }}
       justifyContent={"space-between"}
-      width="16rem"
+      width={{
+        base: "full",
+        lg: "16rem",
+      }}
       height={"100vh"}
+      bg={"white"}
     >
       <Box>
         <Heading textAlign={"center"} fontSize={"20px"} as={"h1"} pt={"3.5rem"}>
