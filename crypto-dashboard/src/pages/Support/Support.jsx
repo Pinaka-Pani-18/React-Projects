@@ -1,5 +1,5 @@
 const Support = () => {
-  return <div></div>;
+  return <div>I am support</div>;
 };
 
 export default Support;
