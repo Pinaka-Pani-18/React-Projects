@@ -20,8 +20,13 @@ const DashBoardLayout = ({ title, children }) => {
       <SideDrawer isOpen={isOpen} onClose={onClose} />
       <Box flexGrow={1}>
         <TopNav title={title} onOpen={onOpen} />
-        <Container maxW={"70rem"} mx={"auto"} mt={6}>
-          {" "}
+        <Container
+          overflowX="hidden"
+          overflowY="auto"
+          h="calc(100vh - 88px)"
+          mt="6"
+          maxW="70rem"
+        >
           {children}
         </Container>
       </Box>
