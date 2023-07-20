@@ -2,9 +2,17 @@ import { Box, HStack, Heading, Icon, Stack, Text } from "@chakra-ui/react";
 import { RxDashboard } from "react-icons/rx";
 import { BsArrowDownUp } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SideNav = () => {
+  const location = useLocation();
+
+  console.log(location);
+
+  function isActive(path) {
+    return location.pathname === path;
+  }
+
   const navLinks = [
     {
       icon: RxDashboard,
@@ -41,9 +49,10 @@ const SideNav = () => {
               <Link key={nav.text} to={nav.link}>
                 <HStack
                   borderRadius={"10px"}
-                  color={"#797E82"}
                   px={"3"}
                   py={"4"}
+                  bg={isActive(nav.link) ? "#f3f3f7" : "transparent"}
+                  color={isActive(nav.link) ? "#171717" : "#797E82"}
                   _hover={{ bg: "#f3f3f7", color: "#171717" }}
                   cursor={"pointer"}
                 >
@@ -61,9 +70,10 @@ const SideNav = () => {
         <Link to={"/support"}>
           <HStack
             borderRadius={"10px"}
-            color={"#797E82"}
             px={"3"}
             py={"4"}
+            bg={isActive("/support") ? "#f3f3f7" : "transparent"}
+            color={isActive("/support") ? "#171717" : "#797E82"}
             _hover={{ bg: "#f3f3f7", color: "#171717" }}
             cursor={"pointer"}
           >
