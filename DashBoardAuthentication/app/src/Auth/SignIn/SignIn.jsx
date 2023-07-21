@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   Center,
   Checkbox,
   Container,
@@ -12,6 +11,8 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+
+import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 
@@ -28,25 +29,7 @@ const SignIn = () => {
   return (
     <Container>
       <Center minH={"100vh"}>
-        <Card
-          w={"456px"}
-          bg={{
-            base: "transparent",
-            md: "white",
-          }}
-          p={{
-            base: "0",
-            md: "6",
-          }}
-          borderRadius={{
-            base: "none",
-            md: "1rem",
-          }}
-          boxShadow={{
-            base: "none",
-            md: "0px 4px 20px rgba(0,0,0,0.05)",
-          }}
-        >
+        <Card>
           <Text fontWeight={"medium"} textStyle={"h1"}>
             Welcome to Crypto App
           </Text>
