@@ -1,12 +1,4 @@
-import {
-  Button,
-  Center,
-  Container,
-  Icon,
-  Stack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Button, Center, Icon, Stack, Text, VStack } from "@chakra-ui/react";
 import Card from "../../components/Card";
 
 import { MdEmail } from "react-icons/md";
