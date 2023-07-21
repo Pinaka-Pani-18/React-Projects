@@ -1,7 +1,16 @@
-import { Button, Center, Icon, Stack, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Icon,
+  Stack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import Card from "../../components/Card";
 
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const RegisterSuccessful = () => {
   return (
@@ -18,9 +27,13 @@ const RegisterSuccessful = () => {
               to explore all it’s features.
             </Text>
           </Stack>
-          <Button w={"full"} fontWeight={"medium"}>
-            Enter the App
-          </Button>
+          <Box w={"full"}>
+            <Link to={"/signin"}>
+              <Button w={"full"} fontWeight={"medium"}>
+                Enter the App
+              </Button>
+            </Link>
+          </Box>
         </VStack>
       </Card>
     </Center>
