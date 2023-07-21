@@ -7,6 +7,7 @@ import SignUp from "./Auth/SignUp/SignUp";
 import SignIn from "./Auth/SignIn/SignIn";
 import RegisterEmailVerify from "./Auth/RegisterEmailVerify/RegisterEmailVerify";
 import RegisterSuccessful from "./Auth/RegisterSuccessful/RegisterSuccessful";
+import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/register-success",
     element: <RegisterSuccessful />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   },
 ]);
 
