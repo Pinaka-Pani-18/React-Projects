@@ -1,13 +1,10 @@
 import {
   Button,
   Center,
-  Checkbox,
   Container,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  HStack,
-  Icon,
   Input,
   Stack,
   Text,
@@ -18,13 +15,18 @@ import { Link } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Formik, Form, Field } from "formik";
 
-import { object, string } from "yup";
+import { object, string, ref } from "yup";
 
 let forgotPasswordValidationSchema = object({
-  email: string().email("Email is invalid").required("Email is required"),
+  password: string()
+    .min(6, "Password must be at least 6 characters")
+    .required("New Password is required"),
+  repeatPassword: string()
+    .oneOf([ref("password"), null], "Password must match")
+    .required("Repeat Password is required"),
 });
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
   return (
     <Container>
       <Center minH={"100vh"}>
@@ -35,19 +37,16 @@ const ForgotPassword = () => {
           }}
           showCard={true}
         >
-          <Link to={"/signin"}>
-            <Icon as={AiOutlineArrowLeft} boxSize={6} />
-          </Link>
           <Text mt={4} fontWeight={"medium"} textStyle={"h1"}>
-            Forgot Password
+            Reset Password
           </Text>
           <Text textStyle={"p2"} color={"black.60"} mt={"4"}>
-            Enter your email address for which account you want to reset your
-            password.
+            Enter your new password.
           </Text>
           <Formik
             initialValues={{
-              email: "",
+              password: "",
+              repeatPassword: "",
             }}
             onSubmit={(values) => {
               console.log(values);
@@ -58,25 +57,46 @@ const ForgotPassword = () => {
               return (
                 <Form>
                   <Stack mt={8} spacing={6}>
-                    <Field name="email">
+                    <Field name="password">
                       {({ field, meta }) => {
                         return (
                           <FormControl
                             isInvalid={!!(meta.error && meta.touched)}
                           >
-                            <FormLabel htmlFor="email">Email</FormLabel>
+                            <FormLabel htmlFor="password">
+                              New Password
+                            </FormLabel>
                             <Input
                               {...field}
-                              name="email"
-                              type="email"
-                              placeholder="Enter your email..."
+                              name="password"
+                              type="password"
+                              placeholder="Enter your new password..."
                             />
                             <FormErrorMessage>{meta.error}</FormErrorMessage>
                           </FormControl>
                         );
                       }}
                     </Field>
-
+                    <Field name="repeatPassword">
+                      {({ field, meta }) => {
+                        return (
+                          <FormControl
+                            isInvalid={!!(meta.error && meta.touched)}
+                          >
+                            <FormLabel htmlFor="repeatPassword">
+                              Repeat New Password
+                            </FormLabel>
+                            <Input
+                              {...field}
+                              name="repeatPassword"
+                              type="password"
+                              placeholder="Enter the repeat password..."
+                            />
+                            <FormErrorMessage>{meta.error}</FormErrorMessage>
+                          </FormControl>
+                        );
+                      }}
+                    </Field>
                     <Stack>
                       <Button type="submit" textStyle={"p3"}>
                         Reset Password
@@ -93,4 +113,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;
