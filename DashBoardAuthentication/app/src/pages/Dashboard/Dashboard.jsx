@@ -8,11 +8,20 @@ import { useEffect } from "react";
 
 import { fetchExample } from "../../api/Query/exampleQuery";
 
+import { useQuery } from "react-query";
+
 const Dashboard = () => {
-  useEffect(() => {
-    const data = fetchExample();
-    console.log(data);
-  }, []);
+  const exampleQuery = useQuery({
+    queryKey: ["example"],
+    queryFn: fetchExample,
+  });
+
+  // useEffect(() => {
+  //   const data = fetchExample();
+  //   console.log(data);
+  // }, []);
+
+  if (exampleQuery.isLoading) return <div>Loading...</div>;
 
   return (
     <DashBoardLayout title={"DashBoard"}>
