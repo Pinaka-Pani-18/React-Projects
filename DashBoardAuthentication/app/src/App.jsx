@@ -12,6 +12,9 @@ import ForgotPasswordSent from "./Auth/ForgotPasswordSent/ForgotPasswordSent";
 import ResetPassword from "./Auth/ResetPassword/ResetPassword";
 import ResetPasswordSuccess from "./Auth/ResetPasswordSuccess/ResetPasswordSuccess";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,10 +63,13 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const queryClient = new QueryClient();
+
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-    </>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 };
 

@@ -4,8 +4,16 @@ import PortfolioSection from "./components/PortfolioSection";
 import PriceSection from "./components/PriceSection";
 import Transactions from "./components/Transactions";
 import InfoCard from "./components/InfoCard";
+import { useEffect } from "react";
+
+import { fetchExample } from "../../api/Query/exampleQuery";
 
 const Dashboard = () => {
+  useEffect(() => {
+    const data = fetchExample();
+    console.log(data);
+  }, []);
+
   return (
     <DashBoardLayout title={"DashBoard"}>
       <Grid
