@@ -1,14 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "./ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../store/productSlice";
 
 const Product = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const { data: products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+    // api
+    // fetch("https://fakestoreapi.com/products")
+    //   .then((res) => res.json())
+    //   .then((data) => setProducts(data));
+    //
+    // dispatch an action for fetchProducts
+    dispatch(getProducts());
+  }, [dispatch]);
 
   return (
     <div>
