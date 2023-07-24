@@ -1,8 +1,16 @@
 /* eslint-disable react/prop-types */
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { useDispatch } from "react-redux";
+import { add } from "../store/cartSlice";
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+
+  const addToCart = (product) => {
+    dispatch(add(product));
+  };
+
   return (
     <div className="col-md-3" style={{ marginBottom: "10px" }}>
       <Card className="h-100">
@@ -21,7 +29,14 @@ const ProductCard = ({ product }) => {
           style={{ backgroundColor: "white" }}
           className="text-center"
         >
-          <Button variant="primary">Add to Cart</Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              addToCart(product);
+            }}
+          >
+            Add to Cart
+          </Button>
         </Card.Footer>
       </Card>
     </div>
