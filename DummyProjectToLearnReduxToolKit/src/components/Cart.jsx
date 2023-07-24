@@ -15,7 +15,7 @@ const Cart = () => {
     return (
       <div
         key={product.id}
-        className="col-md-3"
+        className="col-md-12"
         style={{ marginBottom: "10px" }}
       >
         <Card className="h-100">

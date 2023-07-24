@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import Card from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../store/productSlice";
+import Alert from "react-bootstrap/Alert";
+import StatusCode from "../utils/StatusCode";
 
 const Product = () => {
   const dispatch = useDispatch();
-  const { data: products } = useSelector((state) => state.products);
+  const { data: products, status } = useSelector((state) => state.products);
 
   useEffect(() => {
     // api
@@ -16,6 +18,18 @@ const Product = () => {
     // dispatch an action for fetchProducts
     dispatch(getProducts());
   }, [dispatch]);
+
+  if (status === StatusCode.LOADING) {
+    return <div>Loading...</div>;
+  }
+
+  if (status === StatusCode.ERROR) {
+    return (
+      <Alert variant="danger" key={"danger"}>
+        Something went wrong! Try again later
+      </Alert>
+    );
+  }
 
   return (
     <div>
