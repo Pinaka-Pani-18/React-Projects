@@ -10,8 +10,16 @@ import {
 import Card from "../../components/Card";
 
 import { MdEmail } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 
 const RegisterEmailVerify = () => {
+  const location = useLocation();
+  const email = location.state?.email ?? "";
+
+  if (email === "") {
+    return <Center h={"100vh"}> Invalid Email</Center>;
+  }
+
   return (
     <Container>
       <Center minH={"100vh"}>
@@ -31,7 +39,7 @@ const RegisterEmailVerify = () => {
               <Text textStyle={"p2"} color={"black.60"}>
                 We have sent you an email verification to{" "}
                 <Text as={"span"} color={"p.black"} fontWeight={"bold"}>
-                  jenny.wilson@gmail.com
+                  {email}
                 </Text>
                 . If you didn’t receive it, click the button below.
               </Text>

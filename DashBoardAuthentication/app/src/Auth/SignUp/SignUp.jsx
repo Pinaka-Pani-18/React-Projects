@@ -10,14 +10,18 @@ import {
   Input,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Card from "../../components/Card";
 
 import { Formik, Form, Field } from "formik";
 
 import { object, string, ref } from "yup";
+import { useMutation } from "react-query";
+import { signUpUser } from "../../api/Query/userQuery";
+import { useState } from "react";
 
 let signUpValidationSchema = object({
   name: string().required("Name is required"),
@@ -32,6 +36,28 @@ let signUpValidationSchema = object({
 });
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
+
+  const toast = useToast();
+  const { mutate, isLoading } = useMutation({
+    mutationKey: ["signup"],
+    mutationFn: signUpUser,
+    onSuccess: (data) => {
+      navigate("/register-email-verify", {
+        state: { email },
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "SignUp Error",
+        description: error.message,
+        status: "error",
+      });
+    },
+  });
+
   return (
     <Container>
       <Center minH={"100vh"}>
@@ -51,7 +77,13 @@ const SignUp = () => {
               repeatPassword: "",
             }}
             onSubmit={(values) => {
-              console.log(values);
+              mutate({
+                firstName: values.name,
+                lastName: values.surname,
+                email: values.email,
+                password: values.password,
+              });
+              setEmail(values.email);
             }}
             validationSchema={signUpValidationSchema}
           >
@@ -160,7 +192,11 @@ const SignUp = () => {
                       </Text>
                     </Checkbox>
 
-                    <Button type="submit" textStyle={"p3"}>
+                    <Button
+                      isLoading={isLoading}
+                      type="submit"
+                      textStyle={"p3"}
+                    >
                       Create account
                     </Button>
                     <Text

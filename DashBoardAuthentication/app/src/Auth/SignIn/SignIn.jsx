@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Center,
   Checkbox,
@@ -10,6 +11,7 @@ import {
   Input,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 
 import Card from "../../components/Card";
@@ -17,6 +19,10 @@ import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 
 import { object, string } from "yup";
+
+import { useMutation } from "react-query";
+
+import { signInUser } from "../../api/Query/userQuery";
 
 let signInValidationSchema = object({
   email: string().email("Email is invalid").required("Email is required"),
@@ -26,6 +32,20 @@ let signInValidationSchema = object({
 });
 
 const SignIn = () => {
+  const toast = useToast();
+  const { mutate, isLoading } = useMutation({
+    mutationKey: ["signin"],
+    mutationFn: signInUser,
+    onSuccess: (data) => {},
+    onError: (error) => {
+      toast({
+        title: "Signin Error",
+        description: error.message,
+        status: "error",
+      });
+    },
+  });
+
   return (
     <Container>
       <Center minH={"100vh"}>
@@ -42,7 +62,7 @@ const SignIn = () => {
               password: "",
             }}
             onSubmit={(values) => {
-              console.log(values);
+              mutate(values);
             }}
             validationSchema={signInValidationSchema}
           >
@@ -99,7 +119,11 @@ const SignIn = () => {
                     </HStack>
 
                     <Stack>
-                      <Button type="submit" textStyle={"p3"}>
+                      <Button
+                        isLoading={isLoading}
+                        type="submit"
+                        textStyle={"p3"}
+                      >
                         Log In
                       </Button>
                       <Link to={"/signup"}>
