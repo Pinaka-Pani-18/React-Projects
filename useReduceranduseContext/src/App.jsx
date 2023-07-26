@@ -1,11 +1,11 @@
 import UseReducerExample from "./examples/useReducerExample";
 
-function App() {
+const App = () => {
   return (
     <>
       <UseReducerExample />
     </>
   );
-}
+};
 
 export default App;
