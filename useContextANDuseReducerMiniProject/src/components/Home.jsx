@@ -1,5 +1,9 @@
+import Cart from "./Cart";
+import { CartState } from "../context/Context";
+
 const Home = () => {
-  return <div>I am home page</div>;
+  const { state } = CartState(Cart);
+  return <div>I am Home</div>;
 };
 
 export default Home;
